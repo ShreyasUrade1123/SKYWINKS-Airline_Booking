@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+@font-face {
+  font-family: 'Fluro';
+  src: url('/fonts/kazer-studio-fluro-bold.otf') format('opentype'),
+  ;
+
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Molde Expanded Bold';
+  src: url('/fonts/Molde-Expanded-Bold.woff2') format('woff2'),
+    url('/fonts/Molde-Expanded-Bold.woff') format('woff'),
+    url('/fonts/Molde-Expanded-Bold.ttf') format('truetype');
+
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Neue-UltraLight';
+  src: url('/fonts/Helvetica-Neue-UltraLight.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Neue-LTW0697BlkCnObl';
+  src: url('/fonts/Helvetica-Neue-LTW0697BlkCnObl.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica-Neue-Medium';
+  src: url('/fonts/Helvetica-Neue-Medium-Extended-1.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Roman';
+  src: url('/fonts/NeueHaasDisplayRoman.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Bold';
+  src: url('/fonts/NeueHaasDisplayBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Molde-Expanded-Regular';
+  src: url('/fonts/Molde-Expanded-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Light';
+  src: url('/fonts/NeueHaasDisplayLight.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue-Haas-Grotesk-Medium';
+  src: url('/fonts/NeueHaasDisplayMediu.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
