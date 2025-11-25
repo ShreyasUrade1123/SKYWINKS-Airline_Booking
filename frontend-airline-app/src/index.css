@@ -88,4 +88,25 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #111827;
+  --bg-secondary: #f3f4f6;
+  --card-bg: #ffffff;
+  --accent-color: #DA6102;
+  --border-color: #e5e7eb;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #0a0a0a;
+  --text-primary: #f9fafb;
+  --bg-secondary: #1f2937;
+  --card-bg: #171717;
+  --accent-color: #DA6102;
+  --border-color: #374151;
 }

@@ -29,6 +29,9 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
+    // NEW: Dark Mode State
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
     // 1. Scroll Detection Logic
     useEffect(() => {
         const handleScroll = () => {
@@ -76,9 +79,16 @@ const Header = () => {
         open: { y: 0, transition: { ease: [0, 0.55, 0.45, 1], duration: 0.7 } },
     };
 
+    // Helper to handle theme toggle
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+        // In the future, you will add your global theme switch logic here
+        // e.g., document.documentElement.classList.toggle('dark');
+    };
+
     return (
         <>
-            {/* HEADER BAR 
+            {/* HEADER BAR
                 - isScrolled ? Adds blur and semi-transparent background.
                 - !isScrolled ? Completely transparent.
             */}
@@ -110,11 +120,7 @@ const Header = () => {
                                 className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 group z-50 pointer-events-auto"
                                 onClick={() => setIsMenuOpen(true)}
                             >
-                                {/* THE LINE: 
-                                    - w-6 (Small default)
-                                    - h-[1.5px] (Thin)
-                                    - group-hover:w-10 (Expands on hover)
-                                */}
+                                {/* THE LINE */}
                                 <div className="w-35 h-[5.3px] bg-black group-hover:bg-[#DA6102] group-hover:w-45 transition-all duration-600 ease-in-out rounded-full"></div>
                                 <span className="text-[12px] font-bold tracking-widest uppercase font-['Neue-Haas-Grotesk-Roman'] group-hover:text-[#DA6102] transition-colors mt-1">
                                     MENU
@@ -150,44 +156,51 @@ const Header = () => {
                                         to="/login"
                                         className={`
                                             relative z-10 block
-                                            bg-[#FF853C] text-black 
-                                            px-6 py-2.5 
-                                            text-[11px] font-bold tracking-widest uppercase 
-                                            hover:bg-[#ff7222] transition-colors duration-300 
+                                            bg-[#FF853C] text-black
+                                            px-6 py-2.5
+                                            text-[11px] font-bold tracking-widest uppercase
+                                            hover:bg-[#ff7222] transition-colors duration-300
                                             shadow-sm rounded-none
                                         `}
                                     >
                                         CONTACT
                                     </Link>
 
-                                    {/* --- L-Shaped Corners --- 
-                                        - Initial: -top-1 (Outside)
-                                        - Hover: top-1.5 (Inside)
-                                        - z-20 ensures they sit on top of the button when they move in.
-                                    */}
+                                    {/* --- L-Shaped Corners --- */}
                                     <span className="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-[2px] border-l-[2px] border-black transition-all duration-300 group-hover:top-0 group-hover:left-0 group-hover:border-black z-20 pointer-events-none"></span>
                                     <span className="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-[2px] border-r-[2px] border-black transition-all duration-300 group-hover:top-0 group-hover:right-0 group-hover:border-black z-20 pointer-events-none"></span>
                                     <span className="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-[2px] border-l-[2px] border-black transition-all duration-300 group-hover:bottom-0 group-hover:left-0 group-hover:border-black z-20 pointer-events-none"></span>
                                     <span className="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-[2px] border-r-[2px] border-black transition-all duration-300 group-hover:bottom-0 group-hover:right-0 group-hover:border-black z-20 pointer-events-none"></span>
                                 </div>
-                                {/* 2. Dark Mode Toggle (Sun Icon) */}
+
+                                {/* 2. Dark Mode Toggle (Sun/Moon Icon) */}
                                 <div className="relative group inline-block m-1">
                                     <button
+                                        onClick={toggleTheme}
                                         className={`
                                             relative z-10
-                                            w-[36px] h-[36px] flex items-center justify-center 
+                                            w-[36px] h-[36px] flex items-center justify-center
                                             rounded-none
                                             transition-all duration-300
-                                            ${isMenuOpen
-                                                ? 'bg-white text-white hover:bg-white'
-                                                : 'bg-white/0 backdrop-blur-md text-gray-800 hover:bg-white/0'
+                                            ${isDarkMode
+                                                ? 'bg-black text-white hover:bg-gray-900' // Dark Mode Active: Black BG, White Icon
+                                                : isMenuOpen
+                                                    ? 'bg-white text-gray-800 hover:bg-gray-100' // Menu Open: White BG
+                                                    : 'bg-white/0 backdrop-blur-md text-gray-800 hover:bg-white/10' // Default: Transparent
                                             }
                                         `}
-                                        onClick={() => console.log("Toggle Dark Mode")}
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                                        </svg>
+                                        {isDarkMode ? (
+                                            /* MOON ICON */
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                                            </svg>
+                                        ) : (
+                                            /* SUN ICON */
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                                            </svg>
+                                        )}
                                     </button>
 
                                     {/* --- L-Shaped Corners (Same animation as Contact) --- */}
@@ -203,19 +216,11 @@ const Header = () => {
                 </nav>
             </header>
 
-            {/* MENU OVERLAY - "Half Page Curtain"
-                - h-[50vh]: Only covers top half.
-                - rounded-b-[3rem]: Curved bottom edge.
-                - bg-gradient...: Black top -> Fade out bottom.
-            */}
+            {/* MENU OVERLAY - "Half Page Curtain" */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <>
-                        {/* 1. BACKDROP (Click outside to close) 
-                            - Fixed inset-0 covers the whole screen.
-                            - z-[55] puts it BEHIND the menu (z-[60]).
-                            - Transparent (or add bg-black/10 for a dim effect) so you can see content below but clicks are intercepted.
-                        */}
+                        {/* 1. BACKDROP (Click outside to close) */}
                         <motion.div
                             key="backdrop"
                             initial={{ opacity: 0 }}

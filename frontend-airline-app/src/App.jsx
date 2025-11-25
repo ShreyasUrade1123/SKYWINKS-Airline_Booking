@@ -18,21 +18,21 @@ export default function App() {
     return (
         <AuthProvider>
             <BrowserRouter>
-                <div className="bg-white text-gray-900 font-sans">
+                <div className="min-h-screen font-sans transition-colors duration-300">
                     {/* Header stays consistent across pages */}
                     <Header />
-                    
+
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/signup" element={<SignupPage />} />
                         <Route path="/search" element={<SearchResultsPage />} />
-                        
+
                         {/* Booking Flow */}
                         <Route path="/book/review/:id" element={<ReviewBookingPage />} />
                         <Route path="/book/payment" element={<PaymentPage />} />
                         <Route path="/book/confirmation" element={<BookingConfirmationPage />} />
-                        
+
                         {/* Protected Pages */}
                         <Route path="/my-bookings" element={<MyBookingsPage />} />
                     </Routes>
