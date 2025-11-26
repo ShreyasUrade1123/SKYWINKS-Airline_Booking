@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import RollingText3D from '../common/RollingText3D';
 
 const AboutIntro = () => {
     const { theme } = useTheme();
@@ -13,11 +14,21 @@ const AboutIntro = () => {
 
                 {/* Text Color: Black default -> White override in Dark Mode */}
                 <h2 className="text-3xl sm:text-4xl md:text-7xl font-normal text-gray-900 dark:text-gray-100 leading-tight font-['Neue-Haas-Grotesk-Roman'] max-w-9xl mx-auto transition-colors duration-300">
-                    <span className="text-black dark:text-white transition-colors duration-300">SKYWINKS IS NOT JUST AN AIRLINE,</span>
+                    <RollingText3D className="text-black dark:text-white transition-colors duration-300">
+                        SKYWINKS IS NOT JUST AN AIRLINE,
+                    </RollingText3D>
                     <br className="hidden md:block" />
-                    <span className="text-black dark:text-white transition-colors duration-300">WE ARE YOUR PARTNER</span> <span className="text-gray-400">ON EVERY</span>
+                    <RollingText3D className="text-black dark:text-white transition-colors duration-300" delay={0.2}>
+                        WE ARE YOUR PARTNER
+                    </RollingText3D>
+                    {' '}
+                    <RollingText3D className="text-gray-400" delay={0.4}>
+                        ON EVERY
+                    </RollingText3D>
                     <br className="hidden md:block" />
-                    <span className="text-gray-400">JOURNEY</span>
+                    <RollingText3D className="text-gray-400" delay={0.6}>
+                        JOURNEY
+                    </RollingText3D>
 
                     <span className="inline-block mx-4 align-middle transform -translate-y-2">
                         {/* Added 'group' to container to coordinate the animation */}
@@ -33,11 +44,17 @@ const AboutIntro = () => {
                         </div>
                     </span>
 
-                    <span className="text-gray-400">TAKING YOU</span>
+                    <RollingText3D className="text-gray-400" delay={0.8}>
+                        TAKING YOU
+                    </RollingText3D>
                     <br className="hidden md:block" />
-                    <span className="text-gray-400">HIGHER FURTHER AND CLOSER</span>
+                    <RollingText3D className="text-gray-400" delay={1.0}>
+                        HIGHER FURTHER AND CLOSER
+                    </RollingText3D>
                     <br className="hidden md:block" />
-                    <span className="text-gray-400">TO YOUR DREAMS</span>
+                    <RollingText3D className="text-gray-400" delay={1.2}>
+                        TO YOUR DREAMS
+                    </RollingText3D>
                 </h2>
 
                 <div className="mt-16 relative">

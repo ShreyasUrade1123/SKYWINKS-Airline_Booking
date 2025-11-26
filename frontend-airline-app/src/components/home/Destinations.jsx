@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconLocation, IconCalendar, IconGuest, IconSwap, IconBudget } from '../icons';
+import ParallaxReveal from '../common/ParallaxReveal';
+import MaskedTextReveal from '../common/MaskedTextReveal';
 
 const Destinations = () => {
     const navigate = useNavigate();
@@ -211,32 +213,42 @@ const Destinations = () => {
                 </div>
 
                 {/* Destination Cards (Kept as per "Destinations" page context) */}
-                <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 font-['Neue-Haas-Grotesk-Roman'] uppercase tracking-normal text-gray-900 dark:text-white leading-tight transition-colors duration-300">
-                    Popular Destinations
-                </h2>
+                <div className="flex justify-center mb-16">
+                    <MaskedTextReveal>
+                        <h2 className="text-4xl md:text-6xl font-bold text-center font-['Neue-Haas-Grotesk-Roman'] uppercase tracking-normal text-gray-900 dark:text-white leading-tight transition-colors duration-300">
+                            Popular Destinations
+                        </h2>
+                    </MaskedTextReveal>
+                </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <DestinationCard
-                        city="KUALA LUMPUR"
-                        route="JAKARTA (CGK) - KUALA LUMPUR (KUL)"
-                        price="$132"
-                        img="/Images/Kuala.jpg"
-                        tag="Economy Class - One-way"
-                    />
-                    <DestinationCard
-                        city="MORZINE"
-                        route="JAKARTA (CGK) - MORZINE (MOR)"
-                        price="$485"
-                        img="/Images/Jakarta.jpg"
-                        tag="Business Class - One-way"
-                    />
-                    <DestinationCard
-                        city="YOKOHAMA"
-                        route="JAKARTA (CGK) - YOKOHAMA (YOK)"
-                        price="$273"
-                        img="/Images/Yokohama.jpg"
-                        tag="Economy Class - One-way"
-                    />
+                    <ParallaxReveal delay={0} direction="inward">
+                        <DestinationCard
+                            city="KUALA LUMPUR"
+                            route="JAKARTA (CGK) - KUALA LUMPUR (KUL)"
+                            price="$132"
+                            img="/Images/Kuala.jpg"
+                            tag="Economy Class - One-way"
+                        />
+                    </ParallaxReveal>
+                    <ParallaxReveal delay={0.2} direction="inward">
+                        <DestinationCard
+                            city="MORZINE"
+                            route="JAKARTA (CGK) - MORZINE (MOR)"
+                            price="$485"
+                            img="/Images/Jakarta.jpg"
+                            tag="Business Class - One-way"
+                        />
+                    </ParallaxReveal>
+                    <ParallaxReveal delay={0.4} direction="inward">
+                        <DestinationCard
+                            city="YOKOHAMA"
+                            route="JAKARTA (CGK) - YOKOHAMA (YOK)"
+                            price="$273"
+                            img="/Images/Yokohama.jpg"
+                            tag="Economy Class - One-way"
+                        />
+                    </ParallaxReveal>
                 </div>
             </div>
         </section>

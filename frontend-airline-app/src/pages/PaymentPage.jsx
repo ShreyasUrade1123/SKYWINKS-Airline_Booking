@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IconCheck } from '../components/icons';
+import Button from '../components/common/Button';
+import InputField from '../components/common/InputField';
 
 const PaymentPage = () => {
     const location = useLocation();
@@ -31,87 +33,90 @@ const PaymentPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-6">
-            <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="bg-gray-900 p-8 text-white text-center">
-                    <p className="text-gray-400 text-sm uppercase tracking-wider mb-1">Total Amount</p>
-                    <p className="text-4xl font-bold">${totalCost}</p>
-                    <p className="text-xs text-gray-500 mt-2">Booking ID: {bookingId}</p>
+        <div className="min-h-screen bg-gray-50 dark:bg-[#09090B] py-32 px-4 md:px-8 lg:px-12 transition-colors duration-300 font-['Neue-Haas-Grotesk-Roman']">
+            <div className="max-w-lg mx-auto">
+                <div className="flex items-center gap-2 mb-6 justify-center">
+                    <span className="w-1.5 h-1.5 bg-[#DA6102] rounded-full animate-pulse"></span>
+                    <p className="text-[#DA6102] text-xs font-mono uppercase tracking-widest">SYS: PAYMENT_GATEWAY</p>
                 </div>
 
-                <div className="p-8">
-                    <h3 className="font-bold text-gray-900 mb-6">Payment Details</h3>
+                <div className="relative bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-[#242424] p-1 transition-colors duration-300">
+                    {/* L-Corners */}
+                    <span className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-[#DA6102] z-20"></span>
+                    <span className="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-[#DA6102] z-20"></span>
+                    <span className="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-[#DA6102] z-20"></span>
+                    <span className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-[#DA6102] z-20"></span>
 
-                    <form onSubmit={handlePayment} className="space-y-6">
-                        <div>
-                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Card Number</label>
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    name="cardNumber"
-                                    placeholder="0000 0000 0000 0000"
-                                    className="w-full border border-gray-200 rounded-lg p-3 pl-12 focus:outline-none focus:border-indigo-600 font-mono"
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                                <svg className="absolute left-4 top-3.5 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                                </svg>
-                            </div>
+                    <div className="bg-gray-50 dark:bg-[#111] p-8 text-center border-b border-gray-200 dark:border-[#242424]">
+                        <p className="text-gray-400 text-xs uppercase tracking-widest mb-2 font-mono">Total Amount Due</p>
+                        <p className="text-5xl font-bold text-gray-900 dark:text-white font-['Neue-Haas-Grotesk-Bold']">${totalCost}</p>
+                        <div className="inline-block mt-4 px-3 py-1 bg-[#DA6102]/10 border border-[#DA6102]/20 rounded-none">
+                            <p className="text-[10px] text-[#DA6102] font-mono uppercase tracking-wider">Booking Ref: {bookingId}</p>
                         </div>
+                    </div>
 
-                        <div>
-                            <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Card Holder Name</label>
-                            <input
+                    <div className="p-8">
+                        <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-8 uppercase tracking-wide font-['Neue-Haas-Grotesk-Bold'] text-center">Payment Details</h3>
+
+                        <form onSubmit={handlePayment} className="space-y-6">
+                            <InputField
+                                label="Card Number"
+                                name="cardNumber"
                                 type="text"
-                                name="cardHolder"
-                                placeholder="JOHN DOE"
-                                className="w-full border border-gray-200 rounded-lg p-3 focus:outline-none focus:border-indigo-600 uppercase"
+                                placeholder="0000 0000 0000 0000"
                                 onChange={handleInputChange}
                                 required
                             />
-                        </div>
 
-                        <div className="grid grid-cols-2 gap-6">
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Expiry Date</label>
-                                <input
-                                    type="text"
+                            <InputField
+                                label="Card Holder Name"
+                                name="cardHolder"
+                                type="text"
+                                placeholder="JOHN DOE"
+                                onChange={handleInputChange}
+                                required
+                            />
+
+                            <div className="grid grid-cols-2 gap-6">
+                                <InputField
+                                    label="Expiry Date"
                                     name="expiry"
-                                    placeholder="MM/YY"
-                                    className="w-full border border-gray-200 rounded-lg p-3 focus:outline-none focus:border-indigo-600"
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">CVC</label>
-                                <input
                                     type="text"
+                                    placeholder="MM/YY"
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                                <InputField
+                                    label="CVC"
                                     name="cvc"
+                                    type="text"
                                     placeholder="123"
-                                    className="w-full border border-gray-200 rounded-lg p-3 focus:outline-none focus:border-indigo-600"
                                     onChange={handleInputChange}
                                     required
                                 />
                             </div>
+
+                            <Button
+                                type="submit"
+                                variant="primary"
+                                disabled={loading}
+                                className="w-full justify-center mt-4"
+                                withCorners={true}
+                            >
+                                {loading ? (
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                        <span>Processing...</span>
+                                    </div>
+                                ) : (
+                                    <>Pay Now</>
+                                )}
+                            </Button>
+                        </form>
+
+                        <div className="mt-8 flex items-center justify-center gap-2 text-[10px] text-gray-400 uppercase tracking-wider">
+                            <IconCheck className="w-3 h-3 text-[#DA6102]" /> <span>Secure SSL Encrypted Payment</span>
                         </div>
-
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-indigo-700 hover:shadow-indigo-200 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-                        >
-                            {loading ? (
-                                <>Processing...</>
-                            ) : (
-                                <>Pay ${totalCost}</>
-                            )}
-                        </button>
-                    </form>
-
-                    <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-400">
-                        <IconCheck /> <span>Secure SSL Encrypted Payment</span>
                     </div>
                 </div>
             </div>
