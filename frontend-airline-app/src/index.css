@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
 
+@variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: 'Fluro';
   src: url('/fonts/kazer-studio-fluro-bold.otf') format('opentype'),
@@ -102,11 +104,32 @@ body {
   --border-color: #e5e7eb;
 }
 
-[data-theme='dark'] {
+:root.dark {
   --bg-primary: #0a0a0a;
   --text-primary: #f9fafb;
   --bg-secondary: #1f2937;
   --card-bg: #171717;
   --accent-color: #DA6102;
   --border-color: #374151;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

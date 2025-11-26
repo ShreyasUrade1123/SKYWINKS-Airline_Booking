@@ -39,49 +39,71 @@ const Testimonial = () => {
     const current = testimonials[currentIndex];
 
     return (
-        <section className="py-32 bg-white">
-            <div className="container mx-auto px-6 md:px-24 lg:px-40">
-                <p className="text-gray-500 text-lg font-['Neue-Haas-Grotesk-Roman'] mb-8">This is why passengers love Skywinks</p>
+        <section className="py-24 bg-white dark:bg-[#09090B] transition-colors duration-300 relative overflow-hidden">
+            <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
 
-                <div className="max-w-5xl">
-                    <blockquote className="text-3xl md:text-5xl font-medium leading-tight font-['Neue-Haas-Grotesk-Roman'] text-gray-900 mb-16">
-                        "{current.quote}"
-                    </blockquote>
+                {/* Header */}
+                <div className="mb-12 text-center md:text-left">
+                    <div className="flex items-center gap-2 mb-2 justify-center md:justify-start">
+                        <span className="text-[#DA6102] text-xs font-mono tracking-widest uppercase">SYS: PASSENGER_FEEDBACK</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white font-['Neue-Haas-Grotesk-Bold'] uppercase leading-none tracking-tight">
+                        PASSENGER VOICES
+                    </h2>
+                </div>
 
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-                        {/* Profile */}
-                        <div className="flex items-center gap-6">
-                            <img
-                                src={current.image}
-                                alt={current.name}
-                                className="w-16 h-16 rounded-full object-cover bg-gray-200"
-                                onError={(e) => { e.target.src = 'https://placehold.co/100x100/EEEEEE/999999?text=User'; }}
-                            />
-                            <div>
-                                <p className="text-xl font-bold font-['Neue-Haas-Grotesk-Roman'] text-gray-900">{current.name}</p>
-                                <p className="text-gray-500 font-['Neue-Haas-Grotesk-Light']">{current.role}</p>
+                {/* Main Content Box */}
+                <div className="relative bg-gray-50 dark:bg-[#0a0a0a] border border-gray-200 dark:border-[#DA6102] p-8 md:p-16 transition-colors duration-300">
+
+                    {/* L-Corners */}
+                    <span className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#DA6102] z-20"></span>
+                    <span className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#DA6102] z-20"></span>
+                    <span className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#DA6102] z-20"></span>
+                    <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#DA6102] z-20"></span>
+
+                    <div className="max-w-4xl mx-auto">
+                        <blockquote className="text-2xl md:text-4xl font-medium leading-tight font-['Neue-Haas-Grotesk-Roman'] text-gray-900 dark:text-white mb-12 transition-colors duration-300 text-center">
+                            "{current.quote}"
+                        </blockquote>
+
+                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 border-t border-gray-200 dark:border-[#333] pt-8">
+                            {/* Profile */}
+                            <div className="flex items-center gap-4">
+                                <div className="relative">
+                                    <img
+                                        src={current.image}
+                                        alt={current.name}
+                                        className="w-14 h-14 grayscale hover:grayscale-0 transition-all duration-300 object-cover bg-gray-200"
+                                        onError={(e) => { e.target.src = 'https://placehold.co/100x100/EEEEEE/999999?text=User'; }}
+                                    />
+                                    <div className="absolute inset-0 border border-black/10 dark:border-white/10 pointer-events-none"></div>
+                                </div>
+                                <div>
+                                    <p className="text-lg font-bold font-['Neue-Haas-Grotesk-Roman'] text-gray-900 dark:text-white uppercase tracking-wide transition-colors duration-300">{current.name}</p>
+                                    <p className="text-xs text-[#DA6102] font-mono uppercase tracking-wider">{current.role}</p>
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Navigation */}
-                        <div className="flex items-center gap-8">
-                            <button
-                                onClick={prevTestimonial}
-                                className="text-gray-400 hover:text-[#5B60F0] transition-colors p-2"
-                            >
-                                <IconArrowLongLeft className="w-8 h-8" />
-                            </button>
+                            {/* Navigation */}
+                            <div className="flex items-center gap-6">
+                                <button
+                                    onClick={prevTestimonial}
+                                    className="group flex items-center justify-center w-12 h-12 border border-gray-300 dark:border-[#333] hover:border-[#DA6102] dark:hover:border-[#DA6102] hover:bg-[#DA6102] transition-all duration-300"
+                                >
+                                    <IconArrowLongLeft className="w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-white transition-colors" />
+                                </button>
 
-                            <span className="text-xl font-medium font-['Neue-Haas-Grotesk-Roman'] text-gray-900">
-                                {currentIndex + 1} / {testimonials.length}
-                            </span>
+                                <span className="text-sm font-mono text-gray-500 dark:text-gray-400">
+                                    {String(currentIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                                </span>
 
-                            <button
-                                onClick={nextTestimonial}
-                                className="text-gray-400 hover:text-[#5B60F0] transition-colors p-2"
-                            >
-                                <IconArrowLongRight className="w-8 h-8" />
-                            </button>
+                                <button
+                                    onClick={nextTestimonial}
+                                    className="group flex items-center justify-center w-12 h-12 border border-gray-300 dark:border-[#333] hover:border-[#DA6102] dark:hover:border-[#DA6102] hover:bg-[#DA6102] transition-all duration-300"
+                                >
+                                    <IconArrowLongRight className="w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-white transition-colors" />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

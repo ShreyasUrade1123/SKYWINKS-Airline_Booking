@@ -11,8 +11,8 @@ const HomePage = () => {
     return (
         <>
             <Hero />
-            <AboutIntro />
             <Destinations />
+            <AboutIntro />
             <Features />
             <Blog />
             <Testimonial />
