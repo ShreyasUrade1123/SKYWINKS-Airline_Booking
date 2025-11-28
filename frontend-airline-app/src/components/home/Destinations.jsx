@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconLocation, IconCalendar, IconGuest, IconSwap, IconBudget } from '../icons';
 import ParallaxReveal from '../common/ParallaxReveal';
-import MaskedTextReveal from '../common/MaskedTextReveal';
+import GlitchReveal from '../common/GlitchReveal';
 
 const Destinations = () => {
     const navigate = useNavigate();
@@ -213,12 +213,10 @@ const Destinations = () => {
                 </div>
 
                 {/* Destination Cards (Kept as per "Destinations" page context) */}
-                <div className="flex justify-center mb-16">
-                    <MaskedTextReveal>
-                        <h2 className="text-4xl md:text-6xl font-bold text-center font-['Neue-Haas-Grotesk-Roman'] uppercase tracking-normal text-gray-900 dark:text-white leading-tight transition-colors duration-300">
-                            Popular Destinations
-                        </h2>
-                    </MaskedTextReveal>
+                <div className="flex justify-left mb-16">
+                    <h2 className="text-4xl md:text-6xl font-bold text-left font-['Neue-Haas-Grotesk-Bold'] uppercase tracking-normal text-gray-900 dark:text-white leading-tight transition-colors duration-300">
+                        <GlitchReveal>Popular Destinations</GlitchReveal>
+                    </h2>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

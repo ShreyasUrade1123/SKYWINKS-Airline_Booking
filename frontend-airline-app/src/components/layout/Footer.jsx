@@ -2,7 +2,7 @@ import React from 'react';
 import { IconInstagram, IconFacebook, IconTwitter, IconYoutube } from '../icons';
 
 const Footer = () => (
-    <footer className="bg-black text-white border-t border-[#56504D] pt-16 pb-0 relative overflow-hidden font-sans">
+    <footer className="bg-[#09090B] text-white border-t border-[#56504D] pt-16 pb-0 relative overflow-hidden font-sans">
         <div className="container mx-auto px-6  relative z-20">
             {/* Top Section */}
             <div className="flex flex-col md:flex-row justify-between items-start mb-8">

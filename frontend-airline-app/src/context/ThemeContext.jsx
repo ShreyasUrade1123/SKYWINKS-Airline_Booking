@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import gsap from 'gsap';
 
 const ThemeContext = createContext();
 
@@ -14,6 +15,17 @@ export const ThemeProvider = ({ children }) => {
 
     useEffect(() => {
         const root = window.document.documentElement;
+
+        // GSAP Smooth Transition
+        const targetBg = theme === 'dark' ? '#0a0a0a' : '#ffffff';
+        const targetColor = theme === 'dark' ? '#f9fafb' : '#111827';
+
+        gsap.to("body", {
+            backgroundColor: targetBg,
+            color: targetColor,
+            duration: 1.5,
+            ease: "expo.inOut"
+        });
 
         // Crucial: explicit removal and addition ensures no "stuck" classes
         root.classList.remove('light', 'dark');

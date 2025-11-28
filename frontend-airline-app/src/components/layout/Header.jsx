@@ -139,7 +139,11 @@ const Header = () => {
                                                 : 'bg-white/0 backdrop-blur-md text-black dark:text-white hover:bg-white/0'
                                             }
                                         `}
-                                        onClick={toggleTheme}
+                                        onClick={() => {
+                                            toggleTheme();
+                                            const audio = new Audio('/music/mixkit-airplane-seatbelt-tone-1585 (1).wav');
+                                            audio.play().catch(e => console.error("Audio play failed", e));
+                                        }}
                                     >
                                         {theme === 'dark' ? (
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -203,15 +207,15 @@ const Header = () => {
                                 exit="initial"
                                 className="flex flex-col items-center gap-4 text-center mt-4"
                             >
-                                {['HOME', 'ABOUT ME', 'PROJECTS', 'PLAYGROUND', 'CONTACT'].map((item, index) => (
+                                {['HOME', 'FLIGHT SEARCH', 'PROJECTS', 'PLAYGROUND', 'CONTACT'].map((item, index) => (
                                     <div key={index} className="overflow-hidden">
                                         <motion.div variants={linkVars}>
                                             <Link
                                                 to={
                                                     item === 'HOME'
                                                         ? '/'
-                                                        : item === 'ABOUT ME'
-                                                            ? '/#about'
+                                                        : item === 'FLIGHT SEARCH'
+                                                            ? '/search'
                                                             : item === 'PROJECTS'
                                                                 ? '/#destinations'
                                                                 : item === 'PLAYGROUND'

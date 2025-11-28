@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IconArrowLongLeft, IconArrowLongRight } from '../icons';
-import MaskedTextReveal from '../common/MaskedTextReveal';
+import GlitchReveal from '../common/GlitchReveal';
 
 const testimonials = [
     {
@@ -48,11 +48,9 @@ const Testimonial = () => {
                     <div className="flex items-center gap-2 mb-2 justify-center md:justify-start">
                         <span className="text-[#DA6102] text-xs font-mono tracking-widest uppercase">SYS: PASSENGER_FEEDBACK</span>
                     </div>
-                    <MaskedTextReveal>
-                        <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white font-['Neue-Haas-Grotesk-Bold'] uppercase leading-none tracking-tight">
-                            PASSENGER VOICES
-                        </h2>
-                    </MaskedTextReveal>
+                    <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white font-['Neue-Haas-Grotesk-Bold'] uppercase leading-none tracking-tight">
+                        <GlitchReveal>PASSENGER VOICES</GlitchReveal>
+                    </h2>
                 </div>
 
                 {/* Main Content Box */}

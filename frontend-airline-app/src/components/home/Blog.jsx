@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconArrowRight } from '../icons';
+import GlitchReveal from '../common/GlitchReveal';
 
 const Blog = () => (
     <section id="blog" className="py-24 bg-white dark:bg-[#09090B] transition-colors duration-300 relative overflow-hidden font-sans">
@@ -11,7 +12,7 @@ const Blog = () => (
                     <span className="text-[#DA6102] text-xs font-mono tracking-widest uppercase">SYS: BLOG_MONITOR</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white font-['Neue-Haas-Grotesk-Bold'] uppercase leading-none transition-colors duration-300 ">
-                    WHAT YOU DEFINITELY WANT TO KNOW
+                    <GlitchReveal>WHAT YOU DEFINITELY WANT TO KNOW</GlitchReveal>
                 </h2>
             </div>
 

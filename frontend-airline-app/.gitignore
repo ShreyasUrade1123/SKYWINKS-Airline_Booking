@@ -7,9 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+.pnpm-store
+
+# Build
 dist
 dist-ssr
+build
+out
+
+# Local Environment
+.env
+.env.local
+.env.*.local
 *.local
 
 # Editor directories and files
@@ -23,6 +34,12 @@ dist-ssr
 *.sln
 *.sw?
 
-/node_modules
+# Testing
+coverage
+.nyc_output
+
+# Vercel
+.vercel
+
 
 
